@@ -3,11 +3,27 @@ import csv
 
 class Stop:
 
-    def __init__(id, name, description, lat, lon):
+    def __init__(self, id, name, description, lat, lon):
         self.__id = id
+        self.__name = name
+        self.__description = description
+        self.__lat = lat
+        self.__lon = lon
+    
+    def to_string(self):
+        print("Para el valor " + str(self.__id) + ":")
+        print("---------------------------")
+        resultado = str(self.__id) + " " + str(self.__name) + " " + str(self.__description) + " " + str(self.__lat) + " " + str(self.__lon)
+        return resultado
 
-
-
+def convert_to_object(id, datos):
+    print("Para la clave " + str(id) + ":")
+    print("---------------------------")
+    try:
+        s1 = Stop(datos[str(id)]["id"], datos[str(id)]["name"], datos[str(id)]["description"], datos[str(id)]["lat"], datos[str(id)]["lon"])
+    except:
+        print("Ha saltado error")
+    return s1
 
 def read_data(stops, data):
     datos = {}
@@ -87,3 +103,9 @@ if __name__ == "__main__":
     search_by_lon(datos, "hola")
     get_min(1023, datos)
     get_min(100, datos)
+
+    s1 = convert_to_object(1080, datos)
+
+    #s1 = Stop(1020, "Albereda", "PSEG ALAMEDA 14 (DAVANT JARDÍ VIA CENTRAL) - VALÈNCIA", 4372694.493, 726668.229)
+    resultado = s1.to_string()
+    print("Resultado del to_string -> " + resultado)
