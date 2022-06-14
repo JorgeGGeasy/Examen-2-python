@@ -21,6 +21,7 @@ def convert_to_object(id, datos):
     print("---------------------------")
     try:
         s1 = Stop(datos[str(id)]["id"], datos[str(id)]["name"], datos[str(id)]["description"], datos[str(id)]["lat"], datos[str(id)]["lon"])
+        print("Objeto creado")
     except:
         print("Ha saltado error")
     return s1
@@ -59,7 +60,6 @@ def get_name_description(datos, id):
         print(datos[str(id)]["name"])
     except:
         print("Ha saltado error")
-
 def search_by_lon(datos, longitud):
     
     print("Para la longitud " + str(longitud) + ":")
@@ -93,6 +93,7 @@ def get_min(id, datos):
     print(lista)
         
 if __name__ == "__main__":
+    
     stops = 'stops.csv'
     data = 'stops_data.csv'
     datos = read_data(stops, data)
